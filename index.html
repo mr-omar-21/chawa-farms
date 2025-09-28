@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSim Tanzania</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- LOGIN SCREEN (Should be visible by default) -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Welcome to AgriSim Tanzania</h2>
+            <p>Enter your name to load your farm or create a new one.</p>
+            <input type="text" id="player-name-input" placeholder="Enter your name">
+            <div id="new-player-options">
+                <label for="region-select">Choose your starting region:</label>
+                <select id="region-select">
+                    <option value="Morogoro">Morogoro (Maize)</option>
+                    <option value="Arusha">Arusha (Coffee)</option>
+                    <option value="Dodoma">Dodoma (Grapes)</option>
+                </select>
+            </div>
+            <button id="start-game-btn">Start Farming</button>
+        </div>
+    </div>
+
+    <!-- MAIN GAME CONTAINER (This MUST have the 'hidden' class) -->
+    <div id="game-container" class="hidden">
+        <!-- HEADER -->
+        <header id="header-panel">
+            <h1>AgriSim Tanzania</h1>
+            <div>Welcome, <span id="player-name"></span>! Farming in <span id="region-name"></span></div>
+        </header>
+        <!-- TOP STATS BAR -->
+        <section id="stats-panel">
+            <div>Day: <span id="current-day">1</span></div>
+            <div>Balance: <span id="balance">0</span> <span id="currency">TZS</span></div>
+            <button id="next-day-btn">Next Day</button>
+        </section>
+        <!-- NASA DATA PANEL -->
+        <section id="nasa-data-panel">
+            <h2>NASA Data Feed</h2>
+            <p><strong>Soil Moisture:</strong> <span id="soil-moisture">N/A</span></p>
+            <p><strong>Precipitation Forecast:</strong> <span id="precipitation">N/A</span></p>
+            <p><strong>Vegetation Health (NDVI):</strong> <span id="vegetation-index">N/A</span></p>
+        </section>
+        <!-- MAIN CONTENT AREA -->
+        <main id="main-content">
+            <!-- FARMING SECTION -->
+            <section id="farm-section">
+                <h2>My Farm</h2>
+                <div id="fields-container"></div>
+                <div id="livestock-container"></div>
+            </section>
+            <!-- SIDE PANEL -->
+            <aside id="side-panel">
+                <div id="quests-container"><h3>Active Quests</h3><div id="quests-list"></div></div>
+                <div id="inventory-container"><h3>Inventory</h3><ul id="inventory-list"></ul></div>
+                 <div id="market-container"><h3>Market Prices</h3><ul id="market-list"></ul></div>
+            </aside>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
+
